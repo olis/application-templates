@@ -1,5 +1,3 @@
-load_template './base.rb'
-
 plugin 'localized_dates', :git => 'git://github.com/clemens/localized_dates.git', :submodule => true
 git :submodule => "init"
 
