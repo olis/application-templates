@@ -32,20 +32,19 @@ END
   plugin 'selenium-on-rails', :git => 'git://github.com/paytonrules/selenium-on-rails.git', :submodule => true
   plugin 'sprocket-rails', :git => 'git://github.com/sstephenson/sprockets-rails.git', :submodule => true
   plugin 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :submodule => true
-  plugin 'localized_dates', :git => 'git://github.com/clemens/localized_dates.git', :submodule => true
   
 # Initialize submodules
   git :submodule => "init"
   
 # Install all gems
   gem 'sprockets'
-  gem 'thoughtbot-shoulda'
+  gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
   rake 'gems:install', :sudo => true
   
 # Setup exception notification
   address = ask("From which sender address should exception emails come from? (e.g. MyApp Errors, <errors@myapp.net>)")
   recipients = ask("Which email adresses should get exception emails? (comma seperated)")
-  initializer 'exception_notification', <<-END
+  initializer 'exception_notification.rb', <<-END
 ExceptionNotifier.exception_recipients = #{recipients.split(/,/).collect(&:strip)}
 ExceptionNotifier.sender_address = #{address.split(/,/).collect(&:strip)}
   END
@@ -53,6 +52,3 @@ ExceptionNotifier.sender_address = #{address.split(/,/).collect(&:strip)}
 # Commit initial version
   git :add => '.'
   git :commit => "-a -m 'Initial commit'"
-  
-# Success!
-  puts "SUCCESS!"
