@@ -45,8 +45,8 @@ END
   address = ask("From which sender address should exception emails come from? (e.g. MyApp Errors, <errors@myapp.net>)")
   recipients = ask("Which email adresses should get exception emails? (comma seperated)")
   initializer 'exception_notification.rb', <<-END
-ExceptionNotifier.exception_recipients = #{recipients.split(/,/).collect(&:strip)}
-ExceptionNotifier.sender_address = #{address.split(/,/).collect(&:strip)}
+ExceptionNotifier.exception_recipients = '#{recipients.split(/,/).collect(&:strip)}'
+ExceptionNotifier.sender_address = '#{address.split(/,/).collect(&:strip)}'
   END
   
 # Commit initial version
