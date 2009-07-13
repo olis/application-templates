@@ -1,7 +1,6 @@
 # Delete unnecessary files
   run "rm public/index.html"
   run "rm -f public/javascripts/*"
-  run "mkdir app/javascripts"
 
 # Download JQuery
   run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js > public/javascripts/jquery.js"
@@ -25,6 +24,12 @@ config/database.yml
 db/*.sqlite3
 END
 
+
+# Install all gems
+  gem 'sprockets'
+  gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
+  rake 'gems:install', :sudo => true
+
 # Install submodules plugins
   plugin 'acts_as_list', :git => 'git://github.com/rails/acts_as_list.git', :submodule => true
   plugin 'acts_as_tree', :git => 'git://github.com/rails/acts_as_tree.git', :submodule => true
@@ -37,10 +42,8 @@ END
 # Initialize submodules
   git :submodule => "init"
   
-# Install all gems
-  gem 'sprockets'
-  gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
-  rake 'gems:install', :sudo => true
+# Setup sprocket
+run "ruby vendor/plugins/sprocket-rails/install.rb"
   
 # Setup exception notification
   address = ask("From which sender address should exception emails come from? (e.g. MyApp Errors, <errors@myapp.net>)")
