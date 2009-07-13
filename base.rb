@@ -1,6 +1,7 @@
 # Delete unnecessary files
   run "rm public/index.html"
   run "rm -f public/javascripts/*"
+  run "mkdir app/javascripts"
 
 # Download JQuery
   run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js > public/javascripts/jquery.js"
