@@ -2,10 +2,6 @@
   run "rm public/index.html"
   run "rm -f public/javascripts/*"
 
-# Download JQuery
-  run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js > public/javascripts/jquery.js"
-  run "curl -L http://jqueryjs.googlecode.com/svn/trunk/plugins/form/jquery.form.js > public/javascripts/jquery.form.js"
-
 # Set up git repository
   git :init
   git :add => '.'
@@ -44,6 +40,10 @@ END
   
 # Setup sprocket
 run "ruby vendor/plugins/sprocket-rails/install.rb"
+
+# Download JQuery
+  run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js > app/javascripts/jquery-1.2.6.min.js"
+  run "curl -L http://jqueryjs.googlecode.com/svn/trunk/plugins/form/jquery.form.js > app/javascripts/jquery.form.js"
   
 # Setup exception notification
   address = ask("From which sender address should exception emails come from? (e.g. MyApp Errors, <errors@myapp.net>)")
