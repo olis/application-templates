@@ -42,7 +42,7 @@ END
 run "ruby vendor/plugins/sprocket-rails/install.rb"
 
 # Download JQuery
-  run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js > app/javascripts/jquery-1.2.6.min.js"
+  run "curl -L http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js > app/javascripts/jquery-1.3.2.min.js"
   run "curl -L http://jqueryjs.googlecode.com/svn/trunk/plugins/form/jquery.form.js > app/javascripts/jquery.form.js"
   
 # Setup exception notification
